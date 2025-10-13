@@ -12,6 +12,8 @@ interface UserStore {
   setUser: (user: Partial<User>) => void;
   clearUser: () => void;
   isAuthenticated: boolean;
+  setToken: (token: string) => void;
+  setEmail: (email: string) => void;
 }
 
 const initialUser: User = {
@@ -39,6 +41,22 @@ export const useUserStore = create<UserStore>()(
         set({
           user: initialUser,
           isAuthenticated: false,
+        }),
+
+      setToken: (token: string) =>
+        set((state) => {
+          const updatedUser = { ...state.user, token };
+          return {
+            user: updatedUser,
+            isAuthenticated: true,
+          };
+        }),
+      setEmail: (email: string) =>
+        set((state) => {
+          const updatedUser = { ...state.user, email };
+          return {
+            user: updatedUser,
+          };
         }),
     }),
     {

@@ -23,7 +23,9 @@ export async function fetchApi(endpoint: string, options?: FetchOptions) {
     const data = await response.json();
 
     if (!response.ok) {
-      throw new Error(data.message || `Error ${response.status}: ${response.statusText}`);
+      throw new Error(
+        data.message || `Error ${response.status}: ${response.statusText}`
+      );
     }
 
     return data;
@@ -42,5 +44,12 @@ export async function sendAuthEmail(email: string) {
   return fetchApi("/auth", {
     method: "POST",
     body: JSON.stringify({ email }),
+  });
+}
+
+export async function sendCodeGetToken(email: string, code: number) {
+  return fetchApi("/auth/token", {
+    method: "POST",
+    body: JSON.stringify({ email, codeFront: code }),
   });
 }
