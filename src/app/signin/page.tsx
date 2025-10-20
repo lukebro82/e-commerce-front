@@ -62,6 +62,9 @@ export default function Ingresar() {
       setLoading(false);
     }
   };
+
+
+
   const handleSubmitCode = async () => {
     if (!code) {
       Swal.fire({

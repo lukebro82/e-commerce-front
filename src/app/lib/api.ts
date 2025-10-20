@@ -53,3 +53,18 @@ export async function sendCodeGetToken(email: string, code: number) {
     body: JSON.stringify({ email, codeFront: code }),
   });
 }
+
+export async function patchUser(
+  name: string,
+  address: string,
+  phone: number,
+  token: string
+) {
+  return fetchApi("/me", {
+    method: "PATCH",
+    body: JSON.stringify({ name, address, phone }),
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+}

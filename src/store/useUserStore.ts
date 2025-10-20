@@ -8,12 +8,12 @@ interface User {
 }
 
 interface UserStore {
+  isAuthenticated: boolean;
   user: User;
   setUser: (user: Partial<User>) => void;
-  clearUser: () => void;
-  isAuthenticated: boolean;
   setToken: (token: string) => void;
   setEmail: (email: string) => void;
+  clearUser: () => void;
 }
 
 const initialUser: User = {
