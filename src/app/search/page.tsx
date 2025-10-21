@@ -86,22 +86,19 @@ export default function SearchPage() {
         {products.length > 0 && (
           <div className="flex flex-col justify-center items-center gap-12 mb-8 xl:flex-row">
             {products.map((product: any) => {
-              const placeholderSvg =
-                "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzE1IiBoZWlnaHQ9IjIzNyIgdmlld0JveD0iMCAwIDMxNSAyMzciIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIzMTUiIGhlaWdodD0iMjM3IiBmaWxsPSIjRjNGNEY2Ii8+CjxwYXRoIGQ9Ik0xNTcuNSAxMTguNUwxNDAgMTQxTDEzNSAxMzZMMTI3IDE0NEwxMjAgMTM3TDEwNSAxNTJIMjEwTDE5NSAxMzcsTDE4OCAxNDRMMTgwIDEzNkwxNzUgMTQxTDE1Ny41IDExOC41WiIgZmlsbD0iIzlDQTNBRiIvPgo8Y2lyY2xlIGN4PSIxNTcuNSIgY3k9IjEwOCIgcj0iMjAiIGZpbGw9IiM5Q0EzQUYiLz4KPC9zdmc+";
-
               return (
                 <Card
                   key={product.objectID}
                   title={product.Name}
-                  imageUrl={placeholderSvg}
+                  imageUrl={product.Images[0].thumbnails.large.url}
                   price={product["Unit cost"]}
+                  onClick={() => router.push(`/item/${product.objectID}`)}
                 />
               );
             })}
           </div>
         )}
 
-        {/* Controles de paginación - FUERA del bloque de productos */}
         {searchQuery && totalPages > 1 && (
           <div className="flex justify-center items-center gap-4 mt-8">
             {currentPage > 0 ? (

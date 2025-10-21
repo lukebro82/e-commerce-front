@@ -2,25 +2,30 @@ interface CardProps {
   title: string;
   imageUrl: string;
   price: number;
+  onClick?: () => void;
 }
 
-export const Card = ({ title, imageUrl, price }: CardProps) => {
-  const handleImageError = (e: React.SyntheticEvent<HTMLImageElement, Event>) => {
-    const target = e.target as HTMLImageElement;
-    target.src = "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzE1IiBoZWlnaHQ9IjIzNyIgdmlld0JveD0iMCAwIDMxNSAyMzciIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIzMTUiIGhlaWdodD0iMjM3IiBmaWxsPSIjRjNGNEY2Ii8+CjxwYXRoIGQ9Ik0xNTcuNSAxMTguNUwxNDAgMTQxTDEzNSAxMzZMMTI3IDE0NEwxMjAgMTM3TDEwNSAxNTJIMjEwTDE5NSAxMzcsTDE4OCAxNDRMMTgwIDEzNkwxNzUgMTQxTDE1Ny41IDExOC41WiIgZmlsbD0iIzlDQTNBRiIvPgo8Y2lyY2xlIGN4PSIxNTcuNSIgY3k9IjEwOCIgcj0iMjAiIGZpbGw9IiM5Q0EzQUYiLz4KPC9zdmc+";
-  };
-
+export const Card = ({ title, imageUrl, price, onClick }: CardProps) => {
   return (
-    <div className="flex flex-col border-2 border-black rounded-md w-[315px] h-[337px] overflow-hidden">
-      <img
-        src={imageUrl}
-        alt={title}
-        className="w-[315px] h-[237px] object-cover"
-        onError={handleImageError}
-      />
-      <div className="flex flex-row bg-primary-pink w-full h-full justify-between items-center px-4">
-        <span className="text-black font-extrabold text-[20px]">{title}</span>
-        <span className="text-black font-extrabold text-[20px]">${price}</span>
+    // Ensure rounded corners clip children so the pink background doesn't overflow
+    <div className="flex flex-col border-4 border-black rounded-[8px] w-[315px] h-[321px] overflow-hidden">
+      <div className="flex-shrink-0">
+        <img
+          src={imageUrl}
+          alt={title}
+          className="w-[315px] h-[237px] object-cover"
+        />
+      </div>
+
+  <div className="flex justify-between items-start p-4 bg-primary-pink w-full flex-1">
+        {/* Allow title to wrap to multiple lines and truncate if needed */}
+        <span className="text-black font-extrabold text-[20px] break-words">
+          {title}
+        </span>
+
+        <span className="text-black font-extrabold text-[20px] ml-2 flex-shrink-0">
+          ${" " + price}
+        </span>
       </div>
     </div>
   );
