@@ -92,7 +92,9 @@ export default function SearchPage() {
                   title={product.Name}
                   imageUrl={product.Images[0].thumbnails.large.url}
                   price={product["Unit cost"]}
-                  onClick={() => router.push(`/item/${product.objectID}`)}
+                  onClick={() => {
+                    router.push(`/item/${product.objectID}`);
+                  }}
                 />
               );
             })}

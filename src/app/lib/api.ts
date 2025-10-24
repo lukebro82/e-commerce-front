@@ -12,7 +12,10 @@ interface FetchOptions extends RequestInit {
  */
 export async function fetchApi(endpoint: string, options?: FetchOptions) {
   try {
-    const response = await fetch(`${API_URL}${endpoint}`, {
+    const url = `${API_URL}${endpoint}`;
+    console.log("Fetching:", url);
+
+    const response = await fetch(url, {
       ...options,
       headers: {
         "Content-Type": "application/json",
@@ -20,14 +23,20 @@ export async function fetchApi(endpoint: string, options?: FetchOptions) {
       },
     });
 
-    const data = await response.json();
-
     if (!response.ok) {
-      throw new Error(
-        data.message || `Error ${response.status}: ${response.statusText}`
-      );
+      const errorText = await response.text();
+      console.error("Response error:", errorText);
+      throw new Error(`Error ${response.status}: ${response.statusText}`);
     }
 
+    const contentType = response.headers.get("content-type");
+    if (!contentType || !contentType.includes("application/json")) {
+      const text = await response.text();
+      console.error("Invalid content type:", contentType, "Response:", text);
+      throw new Error("Respuesta no válida del servidor");
+    }
+
+    const data = await response.json();
     return data;
   } catch (error) {
     console.error("Error en la API:", error);

@@ -8,7 +8,10 @@ interface CardProps {
 export const Card = ({ title, imageUrl, price, onClick }: CardProps) => {
   return (
     // Ensure rounded corners clip children so the pink background doesn't overflow
-    <div className="flex flex-col border-4 border-black rounded-[8px] w-[315px] h-[321px] overflow-hidden">
+    <div
+      onClick={onClick}
+      className="flex flex-col border-4 border-black rounded-[8px] w-[315px] h-[321px] overflow-hidden"
+    >
       <div className="flex-shrink-0">
         <img
           src={imageUrl}
@@ -17,7 +20,7 @@ export const Card = ({ title, imageUrl, price, onClick }: CardProps) => {
         />
       </div>
 
-  <div className="flex justify-between items-start p-4 bg-primary-pink w-full flex-1">
+      <div className="flex justify-between items-start p-4 bg-primary-pink w-full flex-1">
         {/* Allow title to wrap to multiple lines and truncate if needed */}
         <span className="text-black font-extrabold text-[20px] break-words">
           {title}
