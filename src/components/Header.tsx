@@ -36,6 +36,7 @@ export const Header = () => {
         width={52}
         height={40}
         className="invert xl:hidden"
+        style={{ height: "auto" }}
         priority={false}
       />
 
@@ -45,7 +46,7 @@ export const Header = () => {
           <a
             className="text-primary-pink-700 text-center w-full cursor-pointer"
             onClick={handleClick}
-            href="#"
+            href=""
           >
             Cerrar sesión
           </a>

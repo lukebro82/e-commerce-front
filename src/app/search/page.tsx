@@ -4,7 +4,7 @@ import { Input } from "@/ui/input";
 import { Card } from "@/ui/card";
 import { useProducts } from "@/hooks/useProducts";
 import { useState, useEffect } from "react";
-import { useRouter, useSearchParams, usePathname } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 
 export default function SearchPage() {
   const router = useRouter();

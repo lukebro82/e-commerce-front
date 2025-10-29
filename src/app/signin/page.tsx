@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/ui/button";
 import { Input } from "@/ui/input";
-import { sendAuthEmail, sendCodeGetToken } from "@/app/lib/api";
+import { sendAuthEmail, sendCodeGetToken } from "@/lib/api";
 import Swal from "sweetalert2";
 import { useUserStore } from "@/store/useUserStore";
 import { useRouter } from "next/navigation";

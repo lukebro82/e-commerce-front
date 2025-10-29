@@ -5,6 +5,7 @@ interface ItemCardProps {
   imageUrl: string;
   price: number;
   description?: string;
+  onClick: () => void;
 }
 
 export const ItemCard = ({
@@ -12,6 +13,7 @@ export const ItemCard = ({
   imageUrl,
   price,
   description,
+  onClick,
 }: ItemCardProps) => {
   return (
     <div className="flex flex-col w-[328px] xl:flex-row  xl:justify-center">
@@ -32,7 +34,10 @@ export const ItemCard = ({
           ${price}
         </span>
 
-        <Button className="bg-primary-light-blue !text-black text-[30px] font-extrabold  rounded w-[328px] h-[63px]">
+        <Button
+          onClick={onClick}
+          className="bg-primary-light-blue !text-black text-[30px] font-extrabold  rounded w-[328px] h-[63px]"
+        >
           Comprar
         </Button>
 

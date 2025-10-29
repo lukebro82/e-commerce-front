@@ -1,6 +1,7 @@
 "use client";
 import { useItem } from "@/hooks/useItem";
 import { ItemCard } from "@/ui/itemCard";
+import { useRouter } from "next/navigation";
 import React from "react";
 
 type Props = {
@@ -12,6 +13,7 @@ type Props = {
 export default function ItemPage({ params }: Props) {
   const { id } = React.use(params);
   const { item, isLoading, isError } = useItem({ search: id });
+  const router = useRouter();
 
   if (isLoading) return <div>Loading...</div>;
   if (isError) return <div>Error loading item</div>;
@@ -23,6 +25,9 @@ export default function ItemPage({ params }: Props) {
         imageUrl={item?.res.images}
         price={item?.res.price}
         description={item?.res.description}
+        onClick={() => {
+          router.push(`/checkout/${id}`);
+        }}
       ></ItemCard>
     </section>
   );

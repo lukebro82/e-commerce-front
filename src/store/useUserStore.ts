@@ -10,6 +10,8 @@ interface User {
 interface UserStore {
   isAuthenticated: boolean;
   user: User;
+  hasHydrated: boolean;
+  setHasHydrated: (state: boolean) => void;
   setUser: (user: Partial<User>) => void;
   setToken: (token: string) => void;
   setEmail: (email: string) => void;
@@ -27,6 +29,9 @@ export const useUserStore = create<UserStore>()(
     (set) => ({
       user: initialUser,
       isAuthenticated: false,
+      hasHydrated: false,
+
+      setHasHydrated: (state: boolean) => set({ hasHydrated: state }),
 
       setUser: (newUser: Partial<User>) =>
         set((state) => {
@@ -61,6 +66,9 @@ export const useUserStore = create<UserStore>()(
     }),
     {
       name: "user-storage", // nombre para localStorage
+      onRehydrateStorage: () => (state) => {
+        state?.setHasHydrated(true);
+      },
     }
   )
 );

@@ -15,7 +15,7 @@ export const Footer = () => {
         <div className="flex flex-col justify-center gap-3 p-4 text-white h-[200px] w-[134px]">
           <span className="font-bold text-lg">Redes</span>
           <Link href="/login" className="flex items-center gap-2">
-            <Image src={twitterLogo} alt="Twitter" width={20} height={20} />
+            <Image src={twitterLogo} alt="Twitter" width={20} height={20} style={{ height: "auto" }} />
             Twitter
           </Link>
           <Link href="/login" className="flex items-center gap-2">
@@ -25,6 +25,7 @@ export const Footer = () => {
               width={19}
               height={23}
               className="invert"
+              style={{ height: "auto" }}
             />
             Instagram
           </Link>

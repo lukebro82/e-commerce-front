@@ -13,12 +13,12 @@ interface FetchOptions extends RequestInit {
 export async function fetchApi(endpoint: string, options?: FetchOptions) {
   try {
     const url = `${API_URL}${endpoint}`;
-    console.log("Fetching:", url);
+    // console.log("Fetching:", url);
 
     const response = await fetch(url, {
       ...options,
       headers: {
-        "Content-Type": "application/json",
+        ...(options?.body && { "Content-Type": "application/json" }),
         ...options?.headers,
       },
     });
@@ -76,4 +76,19 @@ export async function patchUser(
       Authorization: `Bearer ${token}`,
     },
   });
+}
+
+export async function getOrder(id: string, token: string) {
+  console.log("getOrder called with:", {
+    id,
+    token: token ? "***exists***" : "undefined",
+  });
+  const result = await fetchApi(`/order?id=${id}`, {
+    method: "POST",
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+  console.log("getOrder API response:", result);
+  return result;
 }

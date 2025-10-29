@@ -1,5 +1,5 @@
 import useSWR from "swr";
-import { fetchApi } from "../app/lib/api";
+import { fetchApi } from "../lib/api";
 
 interface UseProductsParams {
   limit?: number;
