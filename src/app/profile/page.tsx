@@ -41,10 +41,12 @@ export default function Profile() {
     }
   };
 
+
+
   return (
     <ProtectedRoute>
       <div
-        className={` flex flex-col items-center justify-center gap-4 bg-white h-[500px]`}
+        className={` flex flex-col items-center justify-center gap-4 bg-white xl:min-h-[600px]`}
       >
         <h2 className="text-black text-4xl font-bold text-left">Perfil</h2>
 

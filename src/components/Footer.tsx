@@ -4,12 +4,12 @@ import twitterLogo from "../../public/twitter.svg";
 import instagramLogo from "../../public/instagram.svg";
 export const Footer = () => {
   return (
-    <>
-      <div className="bg-black flex flex-col h-full xl:flex-row xl:justify-between xl:px-4">
+    <footer className="bg-black w-full">
+      <div className="flex flex-col xl:flex-row xl:justify-between xl:px-4">
         <div className="flex flex-col justify-center gap-3 p-4 text-white h-[200px] w-[134px]">
           <Link href="/signin">Ingresar</Link>
           <Link href="/profile">Mi perfil</Link>
-          <Link href="/login">Buscar</Link>
+          <Link href="/search">Buscar</Link>
           <Link href="/login">Logout</Link>
         </div>
         <div className="flex flex-col justify-center gap-3 p-4 text-white h-[200px] w-[134px]">
@@ -31,9 +31,9 @@ export const Footer = () => {
           </Link>
         </div>
       </div>
-      <div className="bg-black h-full">
-        <span className="p-4">©2025 apx</span>
+      <div className="p-4 text-white">
+        <span>©2025 apx</span>
       </div>
-    </>
+    </footer>
   );
 };

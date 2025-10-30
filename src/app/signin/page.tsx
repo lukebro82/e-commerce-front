@@ -95,7 +95,7 @@ export default function Ingresar() {
 
   return (
     <div
-      className={` flex flex-col items-center justify-center bg-white h-[500px]`}
+      className={` flex flex-col items-center justify-center bg-white xl:min-h-[600px]`}
     >
       <div className={`${send ? "" : "hidden"} flex flex-col gap-6`}>
         <h1 className={` text-6xl font-bold text-center text-black`}>Código</h1>

@@ -79,16 +79,11 @@ export async function patchUser(
 }
 
 export async function getOrder(id: string, token: string) {
-  console.log("getOrder called with:", {
-    id,
-    token: token ? "***exists***" : "undefined",
-  });
   const result = await fetchApi(`/order?id=${id}`, {
     method: "POST",
     headers: {
       Authorization: `Bearer ${token}`,
     },
   });
-  console.log("getOrder API response:", result);
   return result;
 }

@@ -19,7 +19,7 @@ export default function ItemPage({ params }: Props) {
   if (isError) return <div>Error loading item</div>;
 
   return (
-    <section className="bg-white flex flex-col items-center justify-center p-18">
+    <section className="bg-white flex flex-col items-center justify-center p-18 xl:min-h-[600px]">
       <ItemCard
         title={item?.res.title}
         imageUrl={item?.res.images}

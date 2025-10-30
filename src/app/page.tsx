@@ -16,7 +16,7 @@ export default function Home() {
 
   return (
     <div>
-      <section className="flex flex-col gap-2 items-center justify-center bg-white h-[500px]">
+      <section className="flex flex-col gap-2 items-center justify-center bg-white xl:min-h-[600px]">
         <h1 className="text-6xl font-bold text-center text-black">
           El mejor <br /> e-commerce
         </h1>
