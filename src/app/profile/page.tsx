@@ -30,7 +30,7 @@ export default function Profile() {
       }).then(() => {
         router.push("/");
       });
-    } catch (error) {
+    } catch {
       Swal.fire({
         title: "Error",
         text: "Error al acceder",
@@ -40,8 +40,6 @@ export default function Profile() {
       });
     }
   };
-
-
 
   return (
     <ProtectedRoute>

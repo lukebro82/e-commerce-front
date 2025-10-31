@@ -3,7 +3,7 @@ import { useParams } from "next/navigation";
 import { useEffect } from "react";
 import { getOrder } from "@/lib/api";
 import { useUserStore } from "@/store/useUserStore";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useRouter } from "next/navigation";
 
 export default function ItemPage() {
   const params = useParams();
@@ -31,7 +31,7 @@ export default function ItemPage() {
     };
 
     fetchOrder();
-  }, [itemid, token]);
+  }, [itemid, token, router]);
 
   return <div>Cargando orden...</div>;
 }
