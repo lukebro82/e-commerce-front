@@ -1,4 +1,4 @@
-const API_URL = "https://e-commerce-back-apx.vercel.app/api";
+const API_URL = process.env.NEXT_PUBLIC_API_URL + "/api";
 
 interface FetchOptions extends RequestInit {
   headers?: HeadersInit;
