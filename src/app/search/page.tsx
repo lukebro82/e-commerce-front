@@ -3,10 +3,9 @@ import { Button } from "@/ui/button";
 import { Input } from "@/ui/input";
 import { Card } from "@/ui/card";
 import { useProducts } from "@/hooks/useProducts";
-import { useState, useEffect } from "react";
+import { useState, useEffect, Suspense } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 
-// Agregar interfaz para el tipo de producto
 interface Product {
   objectID: string;
   Name: string;
@@ -20,7 +19,7 @@ interface Product {
   "Unit cost": number;
 }
 
-export default function SearchPage() {
+function SearchPageContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const [inputValue, setInputValue] = useState("");
@@ -80,7 +79,6 @@ export default function SearchPage() {
           </div>
         </div>
 
-        {/* Resultados */}
         <div className="mb-4">
           {searchQuery && (
             <p className="text-lg text-black text-center">
@@ -168,5 +166,19 @@ export default function SearchPage() {
         )}
       </div>
     </div>
+  );
+}
+
+export default function SearchPage() {
+  return (
+    <Suspense
+      fallback={
+        <div className="xl:min-h-[600px] bg-white flex items-center justify-center">
+          <p className="text-black">Cargando...</p>
+        </div>
+      }
+    >
+      <SearchPageContent />
+    </Suspense>
   );
 }
