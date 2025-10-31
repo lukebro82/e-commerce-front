@@ -81,4 +81,4 @@ npm run dev
 
 ## Curso APX
 
-Este proyecto fue desarrollado como parte del curso de **Academia de Programación Extrema (APX)**, aplicando las mejores prácticas de desarrollo frontend moderno con React y Next.js.
+Este proyecto fue desarrollado como parte del curso de **APX**, aplicando las mejores prácticas de desarrollo frontend moderno con React y Next.js.
