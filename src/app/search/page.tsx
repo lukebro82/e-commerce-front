@@ -6,6 +6,20 @@ import { useProducts } from "@/hooks/useProducts";
 import { useState, useEffect } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 
+// Agregar interfaz para el tipo de producto
+interface Product {
+  objectID: string;
+  Name: string;
+  Images: Array<{
+    thumbnails: {
+      large: {
+        url: string;
+      };
+    };
+  }>;
+  "Unit cost": number;
+}
+
 export default function SearchPage() {
   const router = useRouter();
   const searchParams = useSearchParams();
@@ -85,7 +99,7 @@ export default function SearchPage() {
 
         {products.length > 0 && (
           <div className="flex flex-col justify-center items-center gap-12 mb-8 xl:flex-row">
-            {products.map((product: any) => {
+            {products.map((product: Product) => {
               return (
                 <Card
                   key={product.objectID}
@@ -139,7 +153,7 @@ export default function SearchPage() {
 
         {searchQuery && !isLoading && products.length === 0 && (
           <div className="text-center py-8 text-gray-500">
-            No se encontraron productos para "{searchQuery}"
+            No se encontraron productos para &quot;{searchQuery}&quot;
           </div>
         )}
 
